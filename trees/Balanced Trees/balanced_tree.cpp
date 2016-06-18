@@ -7,14 +7,14 @@ int checkHeight(Node *root);
 int max(int one, int two);
 
 int main () {
-	Node *leftTree = new Node(NULL, NULL);
-	Node *leftTree2 = new Node(NULL, NULL); 
-	Node *leftTree3 = new Node(NULL, NULL); 
+	Node *leftTree = new Node();
+	Node *leftTree2 = new Node(); 
+	Node *leftTree3 = new Node(); 
 	leftTree->left = leftTree2; 
 	leftTree2->left = leftTree3; 
 
-	Node *rightTree = new Node(NULL, NULL); 
-	Node *rightTree2 = new Node(NULL, NULL); 
+	Node *rightTree = new Node(); 
+	Node *rightTree2 = new Node(); 
 	rightTree->right = rightTree2; 
 	Node *root = new Node(leftTree, rightTree);
 	 
@@ -56,14 +56,6 @@ int checkHeight(Node *root) {
 		root->tree_depth = 1 + max(checkHeight(root->left), checkHeight(root->right)); 
 	}
 	return root->tree_depth; 
-	// if(root == NULL) {
-	// 	return 0; 
-	// }
-	// if(root->left == NULL && root->right == NULL) {
-	// 	return 1;
-	// } else {
-	// 	return 1 + max(checkHeight(root->left), checkHeight(root->right)); 
-	// }
 }
 
 int max(int one, int two) {
