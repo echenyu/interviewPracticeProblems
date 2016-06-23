@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 #include "Permutation.h"
+#include <ctime>
 
 using namespace std; 
 
@@ -15,12 +16,10 @@ int main() {
 	Permutation newPermutation("cats"); 
 	assert(!newPermutation.checkPermutationSort("cat"));
 	assert(!newPermutation.checkPermutationHash("cat")); 
-	newPermutation.printPermutations(); 
 
-	Permutation newPermutation2; 
+	Permutation newPermutation2;
 	assert(newPermutation2.checkPermutationSort("")); 
 	assert(newPermutation2.checkPermutationHash("")); 
-	newPermutation2.printPermutations();
 
 	Permutation newPermutation3("c"); 
 	assert(newPermutation3.checkPermutationSort("c"));

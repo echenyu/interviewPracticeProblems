@@ -1,10 +1,12 @@
 #include "Permutation.h"
 #include <unordered_map>
 #include <iostream>
+#include <ctime>
 
 //Givin 2 strings, write a method to decide if they are 
 //permutations of each other
 bool Permutation::checkPermutationSort(std::string comparedString) {
+	int start_s = clock(); 
 	std::string tempString = stringToPermute; 
 	if(tempString.length() != comparedString.length()) {
 		return false; 
@@ -12,10 +14,14 @@ bool Permutation::checkPermutationSort(std::string comparedString) {
 	sort(tempString.begin(), tempString.end());
 	sort(comparedString.begin(), comparedString.end()); 
 
+	int stop_s = clock(); 
+	std::cout << (stop_s - start_s)/double(CLOCKS_PER_SEC)*1000 << " execution time for sorted answer" << std::endl;
+
 	return !tempString.compare(comparedString);  
 }
 
 bool Permutation::checkPermutationHash(std::string comparedString) {
+	int start_s = clock(); 
 	std::string tempString = stringToPermute;
 	if(tempString.length() != comparedString.length()) {
 		return false;
@@ -39,6 +45,10 @@ bool Permutation::checkPermutationHash(std::string comparedString) {
 			charCountHash[comparedString[i]]--; 
 		}
 	}
+	
+	int stop_s = clock(); 
+	std::cout << (stop_s - start_s)/double(CLOCKS_PER_SEC)*1000 << " execution time for hashed answer" << std::endl;
+
 	return true; 
 }
 
