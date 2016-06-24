@@ -12,5 +12,8 @@ int main () {
 
 	Tree firstTree(treeValues); 
 	firstTree.printLevelOrder(); 
+	firstTree.printPreOrder(); 
+	firstTree.printPostOrder(); 
+	firstTree.printInOrder(); 
 }
 

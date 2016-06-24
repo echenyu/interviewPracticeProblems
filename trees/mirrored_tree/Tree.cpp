@@ -50,15 +50,18 @@ void Tree::printTree() {
 }
 
 void Tree::printPreOrder() {
-
+	printPreHelper(head); 
+	std::cout << "is the pre-order traversal" << std::endl;
 }
 
 void Tree::printPostOrder() {
-
+	printPostHelper(head); 
+	std::cout << "is the post-order traversal" << std::endl;
 }
 
 void Tree::printInOrder() {
-	
+	printInOrderHelper(head); 
+	std::cout << "is the in-order traversal" << std::endl;
 }
 
 /******************************PRIVATE METHODS *******************************/
@@ -84,4 +87,31 @@ void Tree::printTreeHelper(Node *currentNode, int indent = 0) {
 
         std::cout<< currentNode->value << "\n ";
     }
+}
+
+void Tree::printPreHelper(Node *current) {
+	if(current == 0) {
+		return; 
+	}
+	std::cout << current->value << " "; 
+	printPreHelper(current->left); 
+	printPreHelper(current->right); 
+}
+
+void Tree::printPostHelper(Node *current) {
+	if(current == 0) {
+		return; 
+	}
+	printPostHelper(current->left); 
+	printPostHelper(current->right); 
+	std::cout << current->value << " "; 
+}
+
+void Tree::printInOrderHelper(Node *current) {
+	if(current == 0) {
+		return; 
+	}
+	printInOrderHelper(current->left); 
+	std::cout << current->value << " ";
+	printInOrderHelper(current->right); 
 }
