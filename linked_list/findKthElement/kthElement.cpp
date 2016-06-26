@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Node.h"
+#include "../Node.h"
 
 using namespace std; 
 
@@ -50,6 +50,7 @@ int kthToLast(int kth, Node *head) {
 	return nodeValueToReturn(indexToStopOn, head); 
 }
 
+// Have two nodes to traverse the list
 int kthToLastDoubleTraversal(int kth, Node *head) {
 	if(head == 0) {
 		return -1; 

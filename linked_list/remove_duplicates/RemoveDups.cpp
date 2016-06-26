@@ -1,4 +1,4 @@
-#include "Node.h"
+#include "../Node.h"
 #include <iostream>
 #include <string>
 #include <cmath>
