@@ -13,7 +13,6 @@ bool Permutation::checkPermutationSort(std::string comparedString) {
 	}
 	sort(tempString.begin(), tempString.end());
 	sort(comparedString.begin(), comparedString.end()); 
-
 	int stop_s = clock(); 
 	std::cout << (stop_s - start_s)/double(CLOCKS_PER_SEC)*1000 << " execution time for sorted answer" << std::endl;
 
@@ -40,6 +39,8 @@ bool Permutation::checkPermutationHash(std::string comparedString) {
 	// value is 0, we know that they are not permutations of each other
 	for(int i = 0; i < comparedString.length(); i++) {
 		if(charCountHash[comparedString[i]] == 0 || !charCountHash[comparedString[i]]) {
+			int stop_s = clock();
+			std::cout << (stop_s - start_s)/double(CLOCKS_PER_SEC)*1000 << " execution time for hashed answer" << std::endl;
 			return false; 
 		} else {
 			charCountHash[comparedString[i]]--; 
