@@ -20,7 +20,8 @@ int main() {
 	list2.removeFront(); 
 
 	// scopeTest(list2);  
-	while(int x = list->removeFront()) {
+	while(!list->isEmpty()) {
+		int x = list->removeFront(); 
 		cout << x << " is the value." << endl;
 	}
 }
