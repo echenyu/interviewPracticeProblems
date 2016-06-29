@@ -11,16 +11,19 @@ public:
 	}
 
 	void push(int value);	
-	void printLevelOrder(); 
+
+	//Function to check if the tree is a mirror image. 
 	bool checkIfMirrored(); 
 	bool checkIfMirroredRecursive(); 
 
-	// TO DO: 
-	void printTree(); 
+	//Functions to print traversal of the tree
 	void printPreOrder(); 
 	void printPostOrder(); 
 	void printInOrder(); 
+	void printLevelOrder(); 
 
+	// TO DO: 
+	void printTree(); 	
 private:
 	Node *head; 
 	Node *nodeToInsertAt; 
@@ -30,4 +33,7 @@ private:
 	bool checkLevel(std::vector<Node *> &children, std::queue<Node *> &levelNodes); 
 	bool isPalindrome(std::vector<Node *> &children); 
 	bool checkIfMirroredRecursive_helper(Node *left, Node *right); 
+	void printPreHelper(Node *current); 
+	void printPostHelper(Node *current); 
+	void printInOrderHelper(Node *current); 
 };

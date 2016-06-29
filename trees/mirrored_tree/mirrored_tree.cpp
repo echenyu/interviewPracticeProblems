@@ -31,5 +31,9 @@ int main () {
 	} else {
 		cout << "Tree is not a mirror image." << endl;
 	}
+	firstTree.printLevelOrder(); 
+	firstTree.printPreOrder(); 
+	firstTree.printPostOrder(); 
+	firstTree.printInOrder(); 
 }
 
