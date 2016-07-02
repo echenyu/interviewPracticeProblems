@@ -65,6 +65,10 @@ void Tree::printInOrder() {
 	std::cout << "is the in-order traversal" << std::endl;
 }
 
+Node *Tree::get_head() {
+	return head; 
+}
+
 bool Tree::checkIfMirrored() {
 	int start_s = clock(); 
 	std::queue<Node *> levelNodes;
@@ -170,6 +174,7 @@ bool Tree::checkIfMirroredRecursive_helper(Node *left, Node *right) {
 	}
 	return (left->value == right->value) && checkIfMirroredRecursive_helper(left->left, right->right) 
 		&& checkIfMirroredRecursive_helper(left->right, right->left); 
+}
 
 void Tree::printPreHelper(Node *current) {
 	if(current == 0) {

@@ -11,6 +11,7 @@ public:
 	}
 
 	void push(int value);	
+	Node *get_head(); 
 
 	//Function to check if the tree is a mirror image. 
 	bool checkIfMirrored(); 
