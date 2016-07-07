@@ -4,10 +4,18 @@
 #include <vector>
 #include <queue>
 #include "../Tree.h"
+#include <unordered_map>
 
 using namespace std;
 
 vector<Node *> createListsForDepth(Node *head);
+vector<Node *> createListsForDepthHash(Node *head);
+void createListsForDepthHash_helper(Node *head, unordered_map<int, vector<Node *> > &nodesAtLevel, int count); 
+
+//          1
+//        2   2
+//       3 3 3 3 
+//		7
 
 int main() {
 	vector<int> treeValues; 
@@ -20,10 +28,10 @@ int main() {
 	treeValues.push_back(3); 
 	treeValues.push_back(3); 
 	treeValues.push_back(7); 
-
+	
 
 	Tree firstTree(treeValues); 
-	vector<Node *> levels = createListsForDepth(firstTree.get_head()); 
+	vector<Node *> levels = createListsForDepthHash(firstTree.get_head()); 
 	for(int i = 0; i < levels.size(); i++) {
 		Node *head = levels[i]; 
 		cout << "Level " << i << ":"; 
@@ -77,3 +85,44 @@ vector<Node *> createListsForDepth(Node *head) {
 
 	return nodesAtLevel; 
 }
+
+// vector<Node *> createListsForDepthHash(Node *head) {
+// 	unordered_map<int, vector<Node *> > nodesAtLevel;
+// 	createListsForDepthHash_helper(head, nodesAtLevel, 1);  
+
+// 	vector<Node *> nodesAtLevel_vector; 
+// 	unordered_map<int, vector<Node *> >::iterator it;
+// 	for(int i = 1; i < 5; i++) {
+// 		vector<Node *> nodes = nodesAtLevel[i]; 
+// 		Node *prev = nullptr; 
+// 		Node *head = nodes[0]; 
+// 		for(int i = 0; i < nodes.size(); i++) {
+// 			Node *current = nodes[i]; 
+// 			if(prev) {
+// 				cout << "Prev: " << prev->value << " points to: " << current->value << endl;
+// 				prev->left = current; 
+// 			}
+// 			prev = current; 
+// 		}
+// 		prev = nullptr; 
+// 		nodesAtLevel_vector.push_back(head);
+// 	}
+// 	return nodesAtLevel_vector; 
+// }
+
+// void createListsForDepthHash_helper(Node *head, unordered_map<int, vector<Node *> > &nodesAtLevel, int count) {
+// 	if(head == nullptr) {
+// 		return; 
+// 	}
+
+// 	if(nodesAtLevel.find(count) != nodesAtLevel.end()) {
+// 		vector<Node *> currentLevel = nodesAtLevel[count]; 
+// 		// currentLevel[currentLevel.size()-1]->left = head; 
+// 	} else {
+// 		nodesAtLevel[count] = vector<Node *>(); 
+// 	}
+
+// 	nodesAtLevel[count].push_back(head); 
+// 	createListsForDepthHash_helper(head->left, nodesAtLevel, count+1); 
+// 	createListsForDepthHash_helper(head->right, nodesAtLevel, count+1); 
+// }
