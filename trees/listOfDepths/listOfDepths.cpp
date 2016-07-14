@@ -85,7 +85,6 @@ vector<Node *> createListsForDepth(Node *head) {
 
 	return nodesAtLevel; 
 }
-
 vector<Node *> createListsForDepthHash(Node *head) {
 	map<int, vector<Node *> > nodesAtLevel;
 	createListsForDepthHash_helper(head, nodesAtLevel, 1);  
