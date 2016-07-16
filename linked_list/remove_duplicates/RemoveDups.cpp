@@ -14,53 +14,57 @@ void removeDuplicatesHash(Node *head);
 
 int main()
 {	
-	Node *newNode = new Node(2, NULL);
-	Node *newNode2 = new Node(1, newNode); 
-	Node *newNode3 = new Node(2, newNode2); 
-	Node *head = newNode3; 
-	while(head != NULL) {
+	Node *newNode = new Node(1, nullptr);
+	Node *newNode2 = new Node(5, newNode); 
+	Node *newNode3 = new Node(1, newNode2); 
+	Node *newNode4 = new Node(3, newNode3);
+	Node *newNode5 = new Node(3, newNode4); 
+	Node *newNode6 = new Node(1, newNode5); 
+	Node *head = newNode6; 
+	while(head != nullptr) {
 		cout << head->value << " "; 
 		head = head->next; 
 	}
 	cout << endl;
-	removeDuplicatesHash(newNode3); 
-	head = newNode3; 
-	while(head != NULL) {
+
+	removeDuplicates(newNode6); 
+	head = newNode6;
+	while(head != nullptr) {
 		cout << head->value << " "; 
 		head = head->next; 
 	}
 	cout << endl;
 }
 
+//1 3 3 1 5 1
 void removeDuplicates(Node *head){
-	if (head == NULL){
+	if (head == nullptr){
 		return;
-	}
-	while (head!= NULL){
+	} 
+
+	while (head != nullptr){
 		int object_val = head->value;
 		Node *prev = head;
 		Node *next = head->next;
-		while (next != NULL)
+		while (next != nullptr)
 		{
 			if (object_val == next->value){
 				prev->next = next->next;
-			}
-			else{
-				prev = next;
+			} else {
+				prev = prev->next; 
 			}
 			next = next->next;
 		}
-	removeDuplicates(head->next);
-	return;
+		head = head->next; 
 	}
 }
 
 void removeDuplicatesHash(Node *head) {
 	unordered_map<int, Node *> nodeMap;
 	Node *current = head; 
-	Node *prev = NULL;
-	while(current != NULL) {
-		if(nodeMap[current->value]) {
+	Node *prev = nullptr;
+	while(current != nullptr) {
+		if(nodeMap.find(current->value) != nodeMap.end()) {
 			prev->next = current->next; 
 		} else {
 			nodeMap[current->value] = current;
