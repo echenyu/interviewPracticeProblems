@@ -12,10 +12,10 @@ bool checkPalindromeRecursive(Node *head);
 
 int main() {
 	Node *node1 = new Node(8, 0); 
-	Node *node11 = new Node(7, node1); 
+	Node *node11 = new Node(1, node1); 
 	Node *node12 = new Node(7, node11); 
 	Node *node13 = new Node(7, node12); 
-	Node *node14 = new Node(7, node13); 
+	Node *node14 = new Node(1, node13); 
 	Node *node15 = new Node(8, node14); 
 	if(checkPalindromeRecursive(node15)) {
 		cout << "we good." << endl;
@@ -45,11 +45,9 @@ bool checkPalindrome(Node *head) {
 }
 
 bool compareNodes(Node *one, Node *&two) {
-	cout << "Compared: " << one->value << " and: " << two->value << endl;
 	if(one->value != two->value) {
 		return false; 
 	}
-	two = two->next; 
 	return true; 
 }
 
@@ -63,6 +61,7 @@ bool checkPalindromeRecursive_helper(Node *head, int length, Node *&nodeToCompar
 	}
 
 	if(checkPalindromeRecursive_helper(head->next, length-2, nodeToCompare)) {
+		nodeToCompare = nodeToCompare->next; 
 		return compareNodes(head, nodeToCompare); 
 	} else {
 		return false; 
