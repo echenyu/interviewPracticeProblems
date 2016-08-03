@@ -1,6 +1,7 @@
 #include <iostream>
 #include "bubbleSort.cpp"
 #include "selectionSort.cpp"
+#include "mergeSort.cpp"
 #include <vector>
 
 using namespace std;
@@ -20,6 +21,12 @@ int main() {
 	bubbleSort(unsortedVector); 
 	printVector("Bubble", unsortedVector); 
 	cout << "\n"; 
+
+	unsortedVector = createUnsortedVector(); 
+	printVector("Original", unsortedVector); 
+	unsortedVector = mergeSort(unsortedVector); 
+	printVector("Merge", unsortedVector); 
+	cout << "\n"; 
 }
 
 void printVector(string type, vector<int> &sortedVector) {
@@ -29,6 +36,8 @@ void printVector(string type, vector<int> &sortedVector) {
 		cout << "Bubble Sort: ";
 	} else if(type == "Original") {
 		cout << "Unsorted: ";
+	} else if(type == "Merge") {
+		cout << "Merge: "; 
 	} else {
 		cout << "Unrecognized sort: ";
 	}
