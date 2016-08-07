@@ -10,7 +10,9 @@ void printVector(string type, vector<int> &sortedVector);
 vector<int> createUnsortedVector(); 
 
 int main() {
+
 	vector<int> unsortedVector = createUnsortedVector(); 
+	
 	printVector("Original", unsortedVector); 
 	selectionSort(unsortedVector); 
 	printVector("Selection", unsortedVector); 
@@ -51,6 +53,27 @@ void printVector(string type, vector<int> &sortedVector) {
 vector<int> createUnsortedVector() {
 	vector<int> tempVector; 
 
+	tempVector.push_back(8); 
+	tempVector.push_back(4);
+	tempVector.push_back(3);
+	tempVector.push_back(6);   
+	tempVector.push_back(9); 
+	tempVector.push_back(3);
+	tempVector.push_back(10);  
+	tempVector.push_back(8); 
+	tempVector.push_back(4);
+	tempVector.push_back(3);
+	tempVector.push_back(6);   
+	tempVector.push_back(9); 
+	tempVector.push_back(3);
+	tempVector.push_back(10);  
+	tempVector.push_back(8); 
+	tempVector.push_back(4);
+	tempVector.push_back(3);
+	tempVector.push_back(6);   
+	tempVector.push_back(9); 
+	tempVector.push_back(3);
+	tempVector.push_back(10);  
 	tempVector.push_back(8); 
 	tempVector.push_back(4);
 	tempVector.push_back(3);
