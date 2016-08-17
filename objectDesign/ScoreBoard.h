@@ -22,3 +22,10 @@ private:
 	unordered_map<string, Player *> userRatings; 
 	set<Player *, PersonCompare> playerRankings;  
 };
+
+class ScoreBoard {
+public:
+	ScoreBoard(); 
+private:
+
+}
