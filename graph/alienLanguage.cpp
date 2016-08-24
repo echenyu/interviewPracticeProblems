@@ -44,13 +44,13 @@ Graph createGraph(vector<string> &sortedWords) {
 		}
 	}
 
-	// for(auto kv : graph.graph) {
-	// 	cout << kv.first << " has "; 
-	// 	for(auto j : kv.second) {
-	// 		cout << j << ",";
-	// 	}
-	// 	cout << endl;
-	// }
+	for(auto kv : graph.graph) {
+		cout << kv.first << " has "; 
+		for(auto j : kv.second) {
+			cout << j << ",";
+		}
+		cout << endl;
+	}
 	return graph; 
 }
 
@@ -85,8 +85,9 @@ void printOrder(vector<string> sortedWords) {
 int main() {
 	vector<string> sortedWords;
 	sortedWords.push_back("caa");
-	sortedWords.push_back("aaa");
-	sortedWords.push_back("aab");
+	sortedWords.push_back("a*");
+	sortedWords.push_back("ad");
+	sortedWords.push_back("ca"); 
 
 	printOrder(sortedWords); 
 }
