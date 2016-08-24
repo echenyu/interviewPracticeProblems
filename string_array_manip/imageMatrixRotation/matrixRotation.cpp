@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <ctime>
+#include <algorithm>
 
 // THE IN PLACE SOLUTION IS FASTER BY ABOUT A FACTOR OF 10! 
 // 1 0 0 1						0 1 0 1     
@@ -14,6 +15,7 @@ using namespace std;
 
 void rotateMatrixAdditionalSpace(vector<vector<int> > &matrixToRotate);
 void rotateMatrixInPlace(vector<vector<int> > &matrixToRotate);
+void rotateMatrixInPlace2(vector<vector<int> > &matrixToRotate); 
 void createTestVector(vector<vector<int> > &matrixToRotate);
 
 int main() {
@@ -21,7 +23,7 @@ int main() {
 	createTestVector(matrixToRotate); 
 
 	int start_s = clock(); 
-	rotateMatrixInPlace(matrixToRotate); 
+	rotateMatrixInPlace2(matrixToRotate); 
 	int stop_s = clock(); 
 	cout << "Execution Time: " << (stop_s - start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
 
@@ -61,6 +63,16 @@ void rotateMatrixInPlace(vector<vector<int> > &matrixToRotate) {
 			matrixToRotate[endIndex-j][i] = matrixToRotate[endIndex-i][endIndex-j];
 			matrixToRotate[endIndex-i][endIndex-j] = matrixToRotate[j][endIndex-i]; 
 			matrixToRotate[j][endIndex-i] = topVal; 
+		}
+	}
+}
+
+void rotateMatrixInPlace2(vector<vector<int> > &matrixToRotate) {
+	reverse(matrixToRotate.begin(), matrixToRotate.end()); 
+
+	for(int i = 0; i < matrixToRotate.size(); i++) {
+		for(int j = i + 1; j < matrixToRotate[i].size(); j++) {
+			swap(matrixToRotate[i][j], matrixToRotate[j][i]); 
 		}
 	}
 }
