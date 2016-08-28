@@ -81,3 +81,17 @@ int determineCarry(bool &carry, int &sum) {
 
 	return sum; 
 }
+
+Node* addTwoNumbers(Node* l1, Node* l2) {
+    Node dummy(0), *dummyP = &dummy;
+    bool carry = false; 
+    while(l1 || l2 || carry) {
+        int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + (carry ? 1 : 0);
+        carry = (sum >= 10 ? true : false);
+        dummyP->next = new Node(sum % 10); 
+        dummyP = dummyP->next; 
+        l1 ? l1 = l1->next : l1;
+        l2 ? l2 = l2->next : l2; 
+    }
+    return dummy.next; 
+}
