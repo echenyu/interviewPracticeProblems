@@ -10,14 +10,13 @@ using namespace std;
 bool checkPalindrome(Node *head);
 bool checkPalindromeRecursive(Node *head);
 
+
 int main() {
 	Node *node1 = new Node(8, 0); 
 	Node *node11 = new Node(1, node1); 
 	Node *node12 = new Node(7, node11); 
-	Node *node13 = new Node(7, node12); 
-	Node *node14 = new Node(1, node13); 
-	Node *node15 = new Node(8, node14); 
-	if(checkPalindromeRecursive(node15)) {
+
+	if(checkPalindromeRecursive(node12)) {
 		cout << "we good." << endl;
 	} else {
 		cout << ":(" << endl;

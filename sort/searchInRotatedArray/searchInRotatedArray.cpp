@@ -10,8 +10,6 @@ int main() {
 	rotatedVector.push_back(15); 
 	rotatedVector.push_back(16); 
 	rotatedVector.push_back(20); 
-	rotatedVector.push_back(20); 
-	rotatedVector.push_back(20); 
 	rotatedVector.push_back(1); 
 	rotatedVector.push_back(3); 
 	rotatedVector.push_back(4); 
@@ -24,14 +22,15 @@ int main() {
 
 int findElementIndex(int valueToFind, int left, int right, vector<int> &rotatedVector) {
 	int middleElement = (left + right) / 2; 
+	cout << rotatedVector[middleElement] << " is the current val." << endl;
 	if(rotatedVector[middleElement] > valueToFind) {
-		if(valueToFind < rotatedVector[left]) {
+		if(valueToFind < rotatedVector[left] && rotatedVector[left] < rotatedVector[right]) {
 			return findElementIndex(valueToFind, middleElement+1, right, rotatedVector); 
 		} else {
 			return findElementIndex(valueToFind, left, middleElement-1, rotatedVector);
 		}
 	} else if(rotatedVector[middleElement] < valueToFind) {
-		if(valueToFind > rotatedVector[right]) {
+		if(valueToFind > rotatedVector[right] && rotatedVector[right] > rotatedVector[left]) {
 			return findElementIndex(valueToFind, left, middleElement-1, rotatedVector); 
 		} else {
 			return findElementIndex(valueToFind, middleElement+1, right, rotatedVector); 
