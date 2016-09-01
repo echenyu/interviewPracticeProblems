@@ -11,6 +11,7 @@ using namespace std;
 Node *findCommonAncestorSpace(Node *firstNode, Node *secondNode);
 Node *findCommonAncestor(Node *root, Node *firstNode, Node *secondNode);
 Node *findCommonAncestorFromRoot(Node *root, Node *firstNode, Node *secondNode); 
+Node* lowestCommonAncestor(Node* root, Node* p, Node* q);
 bool covers(Node *root, Node *nodeToFind);
 
 int main () {
@@ -28,26 +29,28 @@ int main () {
 	Node *firstNode = root->left; 
 	Node *secondNode = root->left->right; 
 	cout << findCommonAncestor(root, firstNode, secondNode)->value << " is ancestor" << endl;
+	cout << lowestCommonAncestor(root, firstNode, secondNode)->value << " is faster" << endl;
 }
 
+//If there is a parent pointer
 Node *findCommonAncestorSpace(Node *firstNode, Node *secondNode) {
-	if(firstNode == nullptr || secondNode == nullptr) {
-		nullptr; 
-	}
+	// if(firstNode == nullptr || secondNode == nullptr) {
+	// 	nullptr; 
+	// }
 
-	unordered_set<Node *> firstNodePath; 
+	// unordered_set<Node *> firstNodePath; 
 
-	while(firstNode != nullptr) {
-		firstNodePath.insert(firstNode); 
-		firstNode = firstNode->parent; 
-	}
+	// while(firstNode != nullptr) {
+	// 	firstNodePath.insert(firstNode); 
+	// 	firstNode = firstNode->parent; 
+	// }
 
-	while(secondNode != nullptr) {
-		if(firstNodePath.find(secondNode) != firstNodePath.end()) {
-			return secondNode; 
-		}
-		secondNode = secondNode->parent; 
-	}
+	// while(secondNode != nullptr) {
+	// 	if(firstNodePath.find(secondNode) != firstNodePath.end()) {
+	// 		return secondNode; 
+	// 	}
+	// 	secondNode = secondNode->parent; 
+	// }
 
 	return nullptr; 
 }
@@ -71,24 +74,17 @@ Node *findCommonAncestor(Node *root, Node *firstNode, Node *secondNode) {
 Node *findCommonAncestorFromRoot(Node *root, Node *firstNode, Node *secondNode) {
 	if(firstNode == nullptr || secondNode == nullptr) {
 		return nullptr;  
-	} else if(root == firstNode) {
-		return firstNode;
-	} else if (root == secondNode) {
-		return secondNode; 
+	} else if(root == firstNode || root == secondNode) {
+		return root;
 	}
 
 	bool firstNodeOnLeft = false; 
 	bool secondNodeOnLeft = false; 
-	if(covers(root->left, firstNode)) {
-		firstNodeOnLeft = true;
-	}
-	if(covers(root->left, secondNode)) {
-		secondNodeOnLeft = true; 
-	}
+	if(covers(root->left, firstNode)) firstNodeOnLeft = true;
+	if(covers(root->left, secondNode)) secondNodeOnLeft = true; 
 
-	if(firstNodeOnLeft != secondNodeOnLeft) {
-		return root; 
-	} 
+	if(firstNodeOnLeft != secondNodeOnLeft) return root; 
+
 	if(firstNodeOnLeft == false) {
 		return findCommonAncestorFromRoot(root->right, firstNode, secondNode); 
 	}
@@ -97,13 +93,31 @@ Node *findCommonAncestorFromRoot(Node *root, Node *firstNode, Node *secondNode) 
 }
 
 bool covers(Node *root, Node *nodeToFind) {
-	if(root == nullptr) {
-		return false;
-	}
-
-	if(root == nodeToFind) {
-		return true; 
-	}
+	if(!root) return false;
+	if(root == nodeToFind) return true; 
 
 	return covers(root->left, nodeToFind) || covers(root->right, nodeToFind); 
+}
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+Node* lowestCommonAncestor(Node* root, Node* p, Node* q) {
+    if(!root || root == p || root == q) {
+        return root; 
+    }
+    
+	Node *left = lowestCommonAncestor(root->left, p, q); 
+	Node *right = lowestCommonAncestor(root->right, p, q); 
+	
+	if(!left) return right;
+	if(right) return root; 
+	return left; 
 }
