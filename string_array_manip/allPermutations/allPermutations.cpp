@@ -1,7 +1,5 @@
 //[1,2,3]
-
-class Solution {
-public:
+#include <vector>
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> permutations;
         vector<int> currentPath; 

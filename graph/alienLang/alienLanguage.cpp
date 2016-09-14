@@ -83,11 +83,6 @@ void printOrder(vector<string> sortedWords) {
 }
 
 int main() {
-	vector<string> sortedWords;
-	sortedWords.push_back("caa");
-	sortedWords.push_back("a*");
-	sortedWords.push_back("ad");
-	sortedWords.push_back("ca"); 
-
+	vector<string> sortedWords = {"baa", "aab", "bba"};
 	printOrder(sortedWords); 
 }
